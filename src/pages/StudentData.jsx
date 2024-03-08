@@ -19,7 +19,7 @@ const StudentData = () => {
         try {
 
 
-            const URL = " http://localhost:8080/api"
+            const URL = " https://itclg-api.onrender.com/api"
             const fetchStudentData = await fetch(`${URL}/getstudent`, {
                 method: "POST",
                 headers: {
@@ -39,7 +39,7 @@ const StudentData = () => {
                 toast.error(response.message)
             }
         } catch (error) {
-           console.log("catch error ")
+           console.log( error)
             toast.error("Internal Server Error")
         }
 

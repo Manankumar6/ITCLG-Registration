@@ -67,8 +67,8 @@ const Home = () => {
                 return;
             }
 
-            const URL = 'http://localhost:8080/api'
-            const fetchdata = await fetch(`${URL}/createstudent`, {
+            // const URL = 'https://itclg-api.onrender.com'
+            const fetchdata = await fetch(`https://itclg-api.onrender.com/api/createstudent`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -99,8 +99,8 @@ const Home = () => {
                 toast.error(response.errors[0].msg)
             }
         } catch (error) {
-           
-            toast.error("Invaild details")
+           console.log(error)
+            toast.error("Request Not Send")
         }
     }
     return (
@@ -134,7 +134,7 @@ const Home = () => {
                         <div className="col-md-4">
                             <label htmlFor="course" className="form-label fw-bold">Course</label>
                             <select className="form-select" aria-label="Default select example" id='course' onChange={handleInput} name='course' value={data.course}>
-                                <option selected>Select Course</option>
+                            <option value="" disabled>Select Course</option>
                                 <option value="ADIT">ADIT</option>
                                 <option value="ADHN">ADHN</option>
                                 <option value="HACKING">HACKING</option>
@@ -155,10 +155,11 @@ const Home = () => {
                         <div className="col">
                             <label htmlFor="state" className="form-label fw-bold">State</label>
                             <select className="form-select" aria-label="Default select example" id='state' onChange={handleInput} name='state' value={data.state}>
-                                <option selected>Select State</option>
-                                <option value="adit">U.P.</option>
-                                <option value="adhn">M.P.</option>
-                                <option value="hacking">JHARKHAND</option>
+                            <option value="" disabled>Select State</option>
+                                <option value="U.P.">U.P.</option>
+                                <option value="M.P.">M.P.</option>
+                                <option value="JHARKHAND">JHARKHAND</option>
+                                <option value="DELHI">DELHI</option>
                             </select>
                         </div>
                     </div>
