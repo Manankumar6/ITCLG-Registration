@@ -67,8 +67,8 @@ const Home = () => {
                 return;
             }
 
-            // const URL = 'https://itclg-api.onrender.com'
-            const fetchdata = await fetch(`https://itclg-api.onrender.com/api/createstudent`, {
+            const URL = 'https://itclg-api.onrender.com'
+            const fetchdata = await fetch(`${URL}/api/createstudent`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
