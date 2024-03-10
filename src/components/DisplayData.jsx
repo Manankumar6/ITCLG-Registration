@@ -2,20 +2,20 @@ import React from 'react'
 
 const DisplayData = (props) => {
 
-    const {name,address,course,session,fname,image,city} = props.data.student
-    const capitalize = (word)=>{
+    const { name, address, course, session, fname, image, city } = props.data.student
+    const capitalize = (word) => {
         return word.charAt(0).toUpperCase() + word.slice(1);
     }
-  return (
-    <div>
-        <div className="container ">
+    return (
+        <div>
+            <div className="container ">
 
-     
-      <div className="card my-2 p-5">
+
+                <div className="card my-2 p-5">
                     <div className="row text-center">
                         <div className="row">
 
-                        <p className='fs-2 '>Student Details</p>
+                            <p className='fs-2 '>Student Details</p>
                         </div>
 
                         <div className='col-md-4 '>
@@ -53,9 +53,9 @@ const DisplayData = (props) => {
 
 
                 </div>
-                </div>
-    </div>
-  )
+            </div>
+        </div>
+    )
 }
 
 export default DisplayData
