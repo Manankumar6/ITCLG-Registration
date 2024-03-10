@@ -77,7 +77,7 @@ const StudentData = () => {
                         </div>
                         <div className="col-md-2   ">
 
-                            <button className='btn btn-danger align-content-center' type='submit'>Search</button>
+                            <button className='btn btn-danger mt-2 mt-md-0 align-content-center' type='submit'>Search</button>
                         </div>
                     </div>
 

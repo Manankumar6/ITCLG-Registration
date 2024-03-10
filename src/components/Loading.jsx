@@ -3,7 +3,7 @@ import Skeleton , { SkeletonTheme }  from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 const Loading = () => {
     return (
-             <SkeletonTheme baseColor="#e3f2fd" highlightColor="#7e8285" borderRadius={20}>
+             <SkeletonTheme baseColor="#e3f2fd" highlightColor="#e9edc9" borderRadius={20}>
         <div>
 
          
@@ -13,7 +13,7 @@ const Loading = () => {
                         <div className="row">
                            
 
-                        <p className='fs-2 '><Skeleton width={300}/></p>
+                        <p className='fs-2 '><Skeleton width={250}/></p>
                          
 
                         </div>
