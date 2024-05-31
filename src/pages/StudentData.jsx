@@ -23,41 +23,41 @@ const StudentData = () => {
             toast.error("Fill Input Field Properly")
             setLoading(false)
             setData('')
-        }else{
-
-       
-        try {
+        } else {
 
 
-            const URL = " https://itclg-api.onrender.com/api"
-            const fetchStudentData = await fetch(`${URL}/getstudent`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(card)
-            })
-            const response = await fetchStudentData.json()
+            try {
 
-            if (fetchStudentData.ok) {
-                setCard({
-                    cardId: ""
+
+                const URL = process.env.REACT_APP_API_URL;
+                const fetchStudentData = await fetch(`${URL}/api/getstudent`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(card)
                 })
-                setLoading(false)
-                setData(response)
-                toast.success("Student Found " + response.student.name)
+                const response = await fetchStudentData.json()
+
+                if (fetchStudentData.ok) {
+                    setCard({
+                        cardId: ""
+                    })
+                    setLoading(false)
+                    setData(response)
+                    // toast.success("Student Found " + response.student.name)
 
 
-            } else {
-                setLoading(false)
-                setData("")
-                toast.error(response.message)
+                } else {
+                    setLoading(false)
+                    setData("")
+                    toast.error(response.message)
+                }
+            } catch (error) {
+                console.log(error)
+                toast.error("Internal Server Error")
             }
-        } catch (error) {
-            console.log(error)
-            toast.error("Internal Server Error")
         }
-    }
 
     }
 
@@ -68,6 +68,10 @@ const StudentData = () => {
 
 
             <div className="container my-2 " style={{ minHeight: '80vh' }}>
+                <div className='d-flex justify-content-center'>
+
+                    <h1 className='text-center bg-danger w-75 text-light rounded-2'>Online Attendence Portal - ITCLG  </h1>
+                </div>
                 <form onSubmit={handleSubmit}>
 
 

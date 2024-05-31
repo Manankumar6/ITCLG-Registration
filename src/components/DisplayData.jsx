@@ -9,7 +9,7 @@ const DisplayData = (props) => {
     return (
         <div>
             <div className="container ">
-
+          
 
                 <div className="card my-2 p-5">
                     <div className="row text-center">
@@ -19,7 +19,7 @@ const DisplayData = (props) => {
                         </div>
 
                         <div className='col-md-4 '>
-                            <img src={image} alt="profileimage" className='rounded-circle img-thumbnail' style={{ width: "15rem" }} />
+                            <img src={image} alt="profileimage" className=' rounded-1 img-thumbnail' style={{ width: "15rem" }} />
                         </div>
                         <div className='col-md-4 align-self-center' >
                             <p className='text-danger fw-bold'>Name:</p>

@@ -67,7 +67,8 @@ const Home = () => {
                 return;
             }
 
-            const URL = 'https://itclg-api.onrender.com'
+            const URL = process.env.REACT_APP_API_URL
+            // const URL = 'http://localhost:8080'
             const fetchdata = await fetch(`${URL}/api/createstudent`, {
                 method: "POST",
                 headers: {
@@ -104,8 +105,11 @@ const Home = () => {
         }
     }
     return (
-        <div className='container-fluid py-5' style={{ background: "#f1fff2" }}>
-            <h1 className='text-center'>Student Registration Form </h1>
+        <div className='container-fluid py-5 ' style={{ background: "#f1fff2" }}>
+            <div className='d-flex justify-content-center'>
+
+            <h1 className='text-center bg-danger w-75 text-light rounded-2'>Online Attendence Registration Portal - ITCLG  </h1>
+            </div>
             <form className='my-5 container border ' onSubmit={handleSubmit}>
                 <div className="mb-3">
                     <div className="row">
