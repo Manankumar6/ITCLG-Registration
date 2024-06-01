@@ -70,7 +70,7 @@ const StudentData = () => {
             <div className="container my-2 " style={{ minHeight: '80vh' }}>
                 <div className='d-flex justify-content-center'>
 
-                    <h1 className='text-center bg-danger w-75 text-light rounded-2 fs-2 py-1'>Online Attendence Portal - ITCEW  </h1>
+                    <h1 className='text-center bg-danger w-75 text-light rounded-2 fs-2 p-1'>Online Attendence Portal - ITCEW  </h1>
                 </div>
                 <form onSubmit={handleSubmit}>
 

@@ -8,7 +8,7 @@ const Loading = () => {
 
 
                 <div className="container" >
-                   <Skeleton width={1250} height={400}/>
+                   <Skeleton height={400}/>
                 </div>
             </div>
         </SkeletonTheme>
