@@ -1,57 +1,59 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 
 const DisplayData = (props) => {
 
-    const { name, address, course, session, fname, image, city } = props.data.student
+    const { name,  course, session, fname, image, city, card } = props.data.student
     const capitalize = (word) => {
         return word.charAt(0).toUpperCase() + word.slice(1);
     }
+
+    let currentDate = new Date().toDateString()
+    let currentTime = new Date().toLocaleTimeString()
+   
+
+    const audioRef = useRef(null);
+
+    useEffect(() => {
+      if (audioRef.current) {
+        audioRef.current.play();
+      }
+    }, []);
     return (
         <div>
             <div className="container ">
-          
 
-                <div className="card my-2 p-5">
-                    <div className="row text-center">
-                        <div className="row">
 
-                            <p className='fs-2 '>Student Details</p>
+                <div className="row my-2 ">
+                    <hr />
+                    <div className="row ">
+
+                        <div className="row p-0">
+                            <h5 className='text-primary'>{currentDate}</h5>
+                            <h5 className='fs-1 fw-bold text-primary'>{currentTime}</h5>
+
+                            {/* <h5><span>{dayOfWeek},</span></h5> */}
                         </div>
+                        <hr />
+                        <div className="row p-0">
+                            <div className="d-flex ">
+                                <h5>ID : <span className='text-success'>{card}</span></h5>
 
-                        <div className='col-md-4 '>
-                            <img src={image} alt="profileimage" className=' rounded-1 img-thumbnail' style={{ width: "15rem" }} />
+                                <h5 className='ms-1'>Name : <span className='text-success'>{capitalize(name)}</span></h5>
+                            </div>
+                            <h5>Father Name : <span className='text-success'>{capitalize(fname)}</span></h5>
+                            <h5>Course : <span className='text-success'>{course}</span></h5>
+                            <h5>Session : <span className='text-success'>{capitalize(session)}</span></h5>
+                            <h5>City : <span className='text-success'>{city}</span></h5>
                         </div>
-                        <div className='col-md-4 align-self-center' >
-                            <p className='text-danger fw-bold'>Name:</p>
-                            <h4>{capitalize(name)}</h4>
-
+                        <hr />
+                        <div className="row my-2 ">
+                            <img className=' border border-1 p-2 rounded-2' src={image} alt="studentimg" style={{ width: "15rem" }} />
                         </div>
-                        <div className='col-md-4 align-self-center'>
-                            <p className='text-danger fw-bold'>Course:</p>
-                            <h4>{capitalize(course)}</h4>
-
-                        </div>
+                        <hr />
+                        <hr />
+                        <audio className='mb-3' style={{width:"20rem"}}  ref={audioRef} src="/image/thankyou.wav" controls  preload="auto"></audio>
+        <hr />
                     </div>
-                    <div className="row mx-md-3 text-center my-1">
-                        <div className="col-md-3">
-                            <p className='text-danger fw-bold'>Session:</p>
-                            <h4>{capitalize(session)}</h4>
-                        </div>
-                        <div className="col-md-3 align-self-start">
-                            <p className='text-danger fw-bold'>Father Name:</p>
-                            <h4>{capitalize(fname)}</h4>
-                        </div>
-                        <div className="col-md-3">
-                            <p className='text-danger fw-bold'>Address:</p>
-                            <h4>{capitalize(address)}</h4>
-                        </div>
-                        <div className="col-md-3">
-                            <p className='text-danger fw-bold'>City:</p>
-                            <h4>{capitalize(city)}</h4>
-                        </div>
-                    </div>
-
-
                 </div>
             </div>
         </div>

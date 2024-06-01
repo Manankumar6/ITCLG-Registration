@@ -70,18 +70,18 @@ const StudentData = () => {
             <div className="container my-2 " style={{ minHeight: '80vh' }}>
                 <div className='d-flex justify-content-center'>
 
-                    <h1 className='text-center bg-danger w-75 text-light rounded-2'>Online Attendence Portal - ITCLG  </h1>
+                    <h1 className='text-center bg-danger w-75 text-light rounded-2 fs-2 py-1'>Online Attendence Portal - ITCEW  </h1>
                 </div>
                 <form onSubmit={handleSubmit}>
 
 
                     <div className="row my-4 mx-5">
-                        <div className="col-md-10 ">
-                            <input className='form-control' type="text" placeholder='Enter Card-ID' name='cardId' onChange={handleInput} value={card.cardId} />
-                        </div>
-                        <div className="col-md-2   ">
+                        <div className="col d-flex ">
+                            <input className='form-control' type="text" placeholder='Scan your ID Card' name='cardId' onChange={handleInput} value={card.cardId} />
+                      
 
-                            <button className='btn btn-danger mt-2 mt-md-0 align-content-center' type='submit'>Search</button>
+                            <button className='btn btn-danger ms-1' type='submit'>Submit</button>
+                        
                         </div>
                     </div>
 

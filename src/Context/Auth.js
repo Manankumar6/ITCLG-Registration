@@ -19,7 +19,7 @@ const AuthProvider = ({ children }) => {
     const [state, dispatch] = useReducer(reducer, initialState);
     const navigate = useNavigate();
     let URL = process.env.REACT_APP_API_URL
-    console.log(URL)
+   
     const Signup = async (e) => {
         e.preventDefault();
         dispatch({ type: 'LOADING' });
