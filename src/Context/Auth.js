@@ -68,7 +68,7 @@ const AuthProvider = ({ children }) => {
             if (response.ok) {
                 const result = await response.json();
                 dispatch({ type: 'USER_LOGIN' });
-                navigate('/register')
+                navigate('/')
                 getUser()
                 toast.success(result.message)
 

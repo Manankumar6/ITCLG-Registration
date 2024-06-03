@@ -25,8 +25,8 @@ function App() {
     <Route element={<ProtectedRoute />}>
 
     <Route  path='/register' element={<Home/>} />
-    <Route path="/initial-admin" element={<PromoteAdmin/>} />
     </Route>
+    <Route path="/initial-admin" element={<PromoteAdmin/>} />
 
     
     <Route path='/' element={<StudentData/>} />
