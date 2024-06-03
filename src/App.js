@@ -25,6 +25,7 @@ function App() {
     <Route element={<ProtectedRoute />}>
 
     <Route  path='/register' element={<Home/>} />
+    <Route path="/initial-admin" element={<PromoteAdmin/>} />
     </Route>
 
     
@@ -32,7 +33,6 @@ function App() {
     <Route path='/about' element={<About/>} />
     <Route path='/signup' element={<Signup/>} />
     <Route path='/login' element={<Login/>} />
-    <Route path="/initial-admin" element={<PromoteAdmin/>} />
     </Routes>
    <Footer/>
     </>

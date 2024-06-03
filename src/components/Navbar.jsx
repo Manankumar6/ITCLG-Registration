@@ -12,12 +12,13 @@ const Navbar = () => {
                     <h2 className="navbar-brand text-danger fw-bolder fs-2">IT Computer Education World</h2>
                     <form className="d-flex " >
 
-                        {isAuth && user.role === "admin" ? 
-                        <NavLink to='/register'>
-                            <button className="btn btn-outline-primary mx-1">Register</button>
-                        </NavLink>
-                            :
-                            <NavLink to='/about'>
+                        {isAuth && user.role === "admin" &&
+                            <NavLink to='/register'>
+                                <button className="btn btn-outline-primary mx-1">Register</button>
+                            </NavLink>
+                        }
+                        {isAuth&&
+                        <NavLink to='/about'>
                             <button className="btn btn-outline-primary mx-1">About ITC</button>
                         </NavLink>
                         
