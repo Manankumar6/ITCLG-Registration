@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useEffect, useReducer } from 'react';
 import { useNavigate } from 'react-router-dom';
 import reducer from '../Reducer/authreducer';
-import {toast} from "react-toastify"
+import { toast } from "react-toastify"
 const AuthContext = createContext();
 
 const initialState = {
@@ -12,18 +12,20 @@ const initialState = {
         password: ""
     },
     isAuth: false,
-   
+    user: {},
+    isSuccess: false
+
 };
 
 const AuthProvider = ({ children }) => {
     const [state, dispatch] = useReducer(reducer, initialState);
     const navigate = useNavigate();
     let URL = process.env.REACT_APP_API_URL
-   
+
     const Signup = async (e) => {
         e.preventDefault();
         dispatch({ type: 'LOADING' });
-    
+
         try {
             const response = await fetch(`${URL}/api/signup`, {
                 method: 'POST',
@@ -32,24 +34,24 @@ const AuthProvider = ({ children }) => {
                 },
                 body: JSON.stringify(state.data),
             });
-    
+
             if (response.ok) {
                 const result = await response.json();
                 dispatch({ type: 'USER_SIGNUP' });
                 dispatch({ type: 'SUCCESS', payload: result });
-                console.log('Form submitted successfully:', result);
+
                 navigate('/login');
-            }else{
+            } else {
                 const errorResponse = await response.json();
                 toast.error(errorResponse.message)
-              
+
             }
         } catch (error) {
             toast.error("Internal Server Error")
             console.log('Network error:', error.message);
         }
     };
-    
+   
     const Login = async (e) => {
         e.preventDefault();
         dispatch({ type: 'LOADING' });
@@ -62,22 +64,23 @@ const AuthProvider = ({ children }) => {
                 body: JSON.stringify(state.data),
                 credentials: 'include',
             });
-           
+
             if (response.ok) {
                 const result = await response.json();
                 dispatch({ type: 'USER_LOGIN' });
-            
-              
                 navigate('/register')
+                getUser()
                 toast.success(result.message)
-            } else{
+
+
+            } else {
                 toast.error("Invaild Credentials")
             }
         } catch (error) {
             // setError(`Network error: ${error.message}`);
             console.error('Network error:', error);
             toast.error("Internal Server Error")
-           
+
         }
     };
     const Logout = async () => {
@@ -87,12 +90,12 @@ const AuthProvider = ({ children }) => {
                 method: 'POST',
                 credentials: 'include',
             });
-    
+
             if (response.ok) {
                 dispatch({ type: 'USER_LOGOUT' }); // Dispatch logout action if needed
-                console.log('Logged out successfully');
+
                 navigate('/')
-            } 
+            }
         } catch (error) {
             console.error('Logout error:', error.message);
             toast.error("Internal Server Error")
@@ -104,35 +107,43 @@ const AuthProvider = ({ children }) => {
     };
 
     const getUser = async () => {
-         try {
+        dispatch({ type: 'LOADING' });
+        try {
             const response = await fetch(`${URL}/api/me`, {
                 method: 'GET',
                 credentials: 'include',
             });
-           
+
             if (response.ok) {
                 const result = await response.json();
-             console.log(result)
-             dispatch({type:"LOAD_USER",payload:result})
-              
-              
-            } else{
+                if (result.success) {
+
+                    dispatch({ type: "LOAD_USER", payload: result })
+                }
+
+
+            } else {
                 const errorResponse = await response.json();
                 console.log(errorResponse.message)
             }
         } catch (error) {
             // setError(`Network error: ${error.message}`);
+            dispatch({ type: "LOAD_USER_ERROR" })
             console.error('Network error:', error);
             toast.error("Internal Server Error form getuser")
-           
+
         }
     };
-    useEffect(()=>{
+   
+    useEffect(() => {
         getUser()
         // eslint-disable-next-line
-    },[])
+    }, [state.isSuccess])
+
+
+
     return (
-        <AuthContext.Provider value={{ ...state, Signup,Login,Logout, handleInput }}>
+        <AuthContext.Provider value={{ ...state, Signup, Login, Logout, handleInput }}>
             {children}
         </AuthContext.Provider>
     );

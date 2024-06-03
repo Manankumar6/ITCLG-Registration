@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 import { useAuth } from '../Context/Auth'
 
 const Navbar = () => {
-    const { isAuth ,Logout} = useAuth()
+    const { isAuth, Logout, user } = useAuth()
 
     return (
         <div>
@@ -12,9 +12,16 @@ const Navbar = () => {
                     <h2 className="navbar-brand text-danger fw-bolder fs-2">IT Computer Education World</h2>
                     <form className="d-flex " >
 
-                      {isAuth&&  <NavLink to='/register'>
+                        {isAuth && user.role === "admin" ? 
+                        <NavLink to='/register'>
                             <button className="btn btn-outline-primary mx-1">Register</button>
-                        </NavLink>}
+                        </NavLink>
+                            :
+                            <NavLink to='/about'>
+                            <button className="btn btn-outline-primary mx-1">About ITC</button>
+                        </NavLink>
+                        
+                        }
                         <NavLink to='/'>
                             <button className="btn btn-outline-primary mx-1">Home</button>
                         </NavLink>
@@ -28,12 +35,12 @@ const Navbar = () => {
                                 </NavLink>
                             </>
                         )
-                            :  
-                    <NavLink to='/logout'>
-                        <button className="btn btn-outline-primary mx-1" onClick={Logout}>Log out</button>
-                    </NavLink>}
-                </form>
-        </div>
+                            :
+                            <NavLink to='/logout'>
+                                <button className="btn btn-outline-primary mx-1" onClick={Logout}>Log out</button>
+                            </NavLink>}
+                    </form>
+                </div>
             </nav >
         </div >
     )

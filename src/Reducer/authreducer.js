@@ -5,7 +5,7 @@ const AuthReducer = (state, action) => {
                 ...state,
                 isLoading: true,
                 isError: "",
-                isSuccess: ""
+          
             };
         case 'HANDLE_INPUT':
             return {
@@ -30,8 +30,16 @@ const AuthReducer = (state, action) => {
             return {
                 ...state,
                 isAuth: true,
-                isLoading: false
+                isLoading: false,
+                user:action.payload.user,
+                isSuccess:true
             }
+            case "LOAD_USER_ERROR":
+                return{
+                    ...state,
+                    isLoading:false,
+                    isSuccess:false
+                }
         // case 'SUCCESS':
         //     return {
         //         ...state,
@@ -53,7 +61,9 @@ const AuthReducer = (state, action) => {
             return {
                 ...state,
                 isAuth: false,
-                isLoading: false
+                isLoading: false,
+                user:{},
+               
             };
         default:
             return state;

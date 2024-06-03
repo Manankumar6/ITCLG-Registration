@@ -1,12 +1,17 @@
 import React from 'react';
 import { useAuth } from '../Context/Auth';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
    
-    const {Login,handleInput, data} = useAuth()
+    const {Login,handleInput, data,isAuth} = useAuth()
+    const navigate = useNavigate()
+    if(isAuth){
+navigate('/')
+    }
 
     return (
-        <div className='container ' style={{minHeight:"82vh"}}>
+        <div className='container ' style={{minHeight:"100vh"}}>
             <form className='p-5' onSubmit={Login}>
                 <h2 className="mb-4">Login</h2>
                

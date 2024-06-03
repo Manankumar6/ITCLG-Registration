@@ -31,7 +31,7 @@ const DisplayData = (props) => {
                             <h5 className='text-primary'>{currentDate}</h5>
                             <h5 className='fs-1 fw-bold text-primary'>{currentTime}</h5>
 
-                            {/* <h5><span>{dayOfWeek},</span></h5> */}
+                         
                         </div>
                         <hr />
                         <div className="row p-0">
