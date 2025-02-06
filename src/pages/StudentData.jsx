@@ -82,7 +82,7 @@ const StudentData = () => {
                             <input className='form-control' type="text" placeholder='Scan your ID Card' name='cardId' onChange={handleInput} value={card.cardId} />
 
 
-                            <button className='btn btn-primary ms-1' type='submit'>Submit</button>
+                            <button className='btn btn-primary bg-blue ms-1' type='submit'>Submit</button>
 
                         </div>
                     </div>

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 const Footer = () => {
   return (
     <div>
-       <footer className="d-flex flex-wrap justify-content-evenly align-items-center py-3 border-top position-fixed w-100 bottom-0" style={{background:"#bbd0ff"}}>
+       <footer className="d-flex flex-wrap justify-content-evenly align-items-center py-3 border-top position-fixed w-100 bottom-0" style={{background:"#7EB6E8"}}>
         <div className="col-md-4 d-flex align-items-center">
         
           <span className="text-dark">Made With ♥ By Manan</span>

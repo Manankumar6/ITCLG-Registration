@@ -6,22 +6,24 @@ const Navbar = () => {
     const { isAuth, Logout } = useAuth();
 
     return (
-        <nav className="navbar navbar-expand-lg bg-blue " style={{opacity:"0.9"}} >
-            <div className="container ">
-                <img
-                    src='/image/logo.jpeg'
-                    alt='logo'
-                    className="rounded-circle shadow-sm img-fluid me-2"
-                    style={{ width: "50px", height: "50px", objectFit: "cover" }}
-                />
-                {/* Brand Name */}
-                <h2 className="navbar-brand text-light fw-bolder fs-5 my-auto  fs-md-3">
-                    IT Computer Education World
-                </h2>
+        <nav className="navbar navbar-expand-lg bg-blue" style={{ opacity: "0.9" }}>
+            <div className="container">
+                {/* Brand Logo & Name Wrapper */}
+                <div className="d-flex align-items-center">
+                    <img
+                        src='/image/logo.jpeg'
+                        alt='logo'
+                        className="rounded-circle shadow-sm img-fluid me-2"
+                        style={{ width: "45px", height: "45px", objectFit: "cover" }}
+                    />
+                    <h2 className="navbar-brand text-light fw-bolder my-auto fs-6 fs-md-4 text-nowrap">
+                        IT Computer Education World
+                    </h2>
+                </div>
 
                 {/* Navbar Toggler Button for Mobile */}
                 <button
-                    className="navbar-toggler btn-sm "
+                    className="navbar-toggler btn-sm p-1"
                     type="button"
                     data-bs-toggle="collapse"
                     data-bs-target="#navbarNav"
@@ -33,41 +35,29 @@ const Navbar = () => {
                 </button>
 
                 {/* Navbar Links */}
-                <div className="collapse navbar-collapse" id="navbarNav">
-                    <div className="ms-auto d-flex flex-wrap gap-2 mt-2 mt-lg-0">
-                        <NavLink to='/'>
-                            <button className="btn btn-outline-light">Home</button>
+                <div className="collapse navbar-collapse justify-content-lg-end mt-2 mt-lg-0" id="navbarNav">
+                    <div className="d-flex flex-column flex-lg-row gap-2 align-items-lg-center">
+                        <NavLink to='/' className="text-decoration-none">
+                            <button className="btn btn-outline-light w-100 w-lg-auto">Home</button>
                         </NavLink>
 
-                        <NavLink to='/about'>
-                            <button className="btn btn-outline-light">About ITC</button>
+                        <NavLink to='/about' className="text-decoration-none">
+                            <button className="btn btn-outline-light w-100 w-lg-auto">About ITC</button>
                         </NavLink>
 
                         {isAuth && (
-                            <NavLink to='/register'>
-                                <button className="btn btn-outline-light">Register Student</button>
+                            <NavLink to='/register' className="text-decoration-none">
+                                <button className="btn btn-outline-light w-100 w-lg-auto">Register Student</button>
                             </NavLink>
                         )}
 
-                        {/* {!isAuth ? (
-                            <>
-                                <NavLink to='/signup'>
-                                    <button className="btn btn-outline-light">Sign up</button>
-                                </NavLink>
-                                <NavLink to='/login'>
-                                    <button className="btn btn-outline-light">Log in</button>
-                                </NavLink>
-                            </>
-                        ) : (
-                            <NavLink to='/logout'>
-                                <button className="btn btn-outline-light" onClick={Logout}>Log out</button>
+                        {isAuth && (
+                            <NavLink to='/logout' className="text-decoration-none">
+                                <button className="btn btn-outline-light w-100 w-lg-auto" onClick={Logout}>
+                                    Log out
+                                </button>
                             </NavLink>
-                        )} */}
-                        {isAuth &&
-                            <NavLink to='/logout'>
-                                <button className="btn btn-outline-light" onClick={Logout}>Log out</button>
-                            </NavLink>
-                        }
+                        )}
                     </div>
                 </div>
             </div>

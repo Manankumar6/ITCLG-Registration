@@ -51,7 +51,7 @@ const Login = () => {
                             />
                             <button
                                 type="button"
-                                className="btn btn-primary"
+                                className="btn btn-primary  bg-blue"
                                 onClick={() => setShowPassword(!showPassword)}
                             >
                                 {showPassword ? <FaRegEyeSlash /> : <FaRegEye />}
@@ -59,7 +59,7 @@ const Login = () => {
                         </div>
                     </div>
 
-                    <button type="submit" className="btn btn-primary w-100">Login</button>
+                    <button type="submit" className="btn btn-primary w-100 bg-blue">Login</button>
                 </form>
                 <hr className="my-4" />
                 <p className="text-center">Or</p>
