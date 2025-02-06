@@ -115,8 +115,8 @@ const Home = () => {
     return (
         <div className="container-fluid py-5" style={{ background: "#f1fff2" }}>
             <div className="d-flex justify-content-center">
-                <h1 className="text-center bg-danger w-75 text-light rounded-2 p-2 shadow">
-                    Online Attendance Registration Portal - ITCLG
+                <h1 className="text-center bg-orange w-75 text-light rounded-2 p-2 shadow">
+                    Online Attendance Registration Portal - ITCEW
                 </h1>
             </div>
 

@@ -69,7 +69,7 @@ const StudentData = () => {
 
             <div className="container my-2 " >
                 <div className="d-flex justify-content-center  ">
-                    <h1 className="text-center bg-danger text-light fw-bold rounded-2 py-3 px-2  w-100  fs-4 fs-md-5 fs-lg-3">
+                    <h1 className="text-center  text-light fw-bold rounded-2 py-3 px-2  w-100  fs-4 fs-md-5 fs-lg-3 bg-orange" >
                         Online Attendance Portal - ITCEW
                     </h1>
                 </div>
@@ -82,7 +82,7 @@ const StudentData = () => {
                             <input className='form-control' type="text" placeholder='Scan your ID Card' name='cardId' onChange={handleInput} value={card.cardId} />
 
 
-                            <button className='btn btn-danger ms-1' type='submit'>Submit</button>
+                            <button className='btn btn-primary ms-1' type='submit'>Submit</button>
 
                         </div>
                     </div>

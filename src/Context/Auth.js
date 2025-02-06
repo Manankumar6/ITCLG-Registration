@@ -132,7 +132,7 @@ const AuthProvider = ({ children }) => {
             // setError(`Network error: ${error.message}`);
             dispatch({ type: "LOAD_USER_ERROR" })
             console.error('Network error:', error);
-            toast.error("Internal Server Error form getuser")
+           
 
         }
     };
