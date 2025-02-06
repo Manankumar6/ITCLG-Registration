@@ -48,7 +48,7 @@ const AuthProvider = ({ children }) => {
             }
         } catch (error) {
             toast.error("Internal Server Error")
-            console.log('Network error:', error.message);
+            // console.log('Network error:', error.message);
         }
     };
    
@@ -68,9 +68,9 @@ const AuthProvider = ({ children }) => {
             if (response.ok) {
                 const result = await response.json();
                 dispatch({ type: 'USER_LOGIN' });
-                navigate('/')
                 getUser()
                 toast.success(result.message)
+                navigate('/')
 
 
             } else {
@@ -122,10 +122,12 @@ const AuthProvider = ({ children }) => {
                 }
 
 
-            } else {
-                const errorResponse = await response.json();
-                console.log(errorResponse.message)
             }
+            //  else {
+            //     const errorResponse = await response.json();
+            //     toast.error(errorResponse.message)
+            // }
+
         } catch (error) {
             // setError(`Network error: ${error.message}`);
             dispatch({ type: "LOAD_USER_ERROR" })
@@ -134,7 +136,7 @@ const AuthProvider = ({ children }) => {
 
         }
     };
-   
+
     useEffect(() => {
         getUser()
         // eslint-disable-next-line

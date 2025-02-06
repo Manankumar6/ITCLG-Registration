@@ -38,7 +38,8 @@ const AuthReducer = (state, action) => {
                 return{
                     ...state,
                     isLoading:false,
-                    isSuccess:false
+                    isSuccess:false,
+                    isAuth: false
                 }
         // case 'SUCCESS':
         //     return {

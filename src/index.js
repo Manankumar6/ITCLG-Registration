@@ -9,16 +9,16 @@ import { AuthProvider } from './Context/Auth';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-<BrowserRouter>
-<AuthProvider>
+  
+    <BrowserRouter>
+      <AuthProvider>
 
-    <App />
-    <ToastContainer
-        bodyClassName="toastBody"
+        <App />
+        <ToastContainer
+          bodyClassName="toastBody"
         />
-        </AuthProvider>
-</BrowserRouter>
-  </React.StrictMode>
+      </AuthProvider>
+    </BrowserRouter>
+  
 );
 

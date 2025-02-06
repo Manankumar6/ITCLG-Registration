@@ -35,7 +35,7 @@ const PromoteAdmin = () => {
         // eslint-disable-next-line
     }, []);
     return (
-        <div className='container' style={{ height: "100vh" }}>
+        <div className='container' >
             <div className="d-flex justify-content-center text-center my-2">
 
                {message? <div className="card p-5 bg-success rounded-4 text-light w-50">
@@ -45,7 +45,7 @@ const PromoteAdmin = () => {
                     <h4>You have successfully promoted the user to admin.</h4>
                 </div>
                 :
-                <div className="card p-5 bg-danger rounded-4 text-light w-50">
+                <div className="card p-5 text-danger rounded-4 text-light w-50" style={{background:"#ffc2d1"}}>
                     <h1 >
                         Oops!
                     </h1>

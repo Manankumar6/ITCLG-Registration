@@ -2,7 +2,7 @@ import React from 'react'
 
 const About = () => {
   return (
-    <div className='container' style={{height:"100vh"}}>
+    <div className='container' >
         <h1 className='text-center'>About ITC Education World- Course</h1>
         <h5>ADIT (Advance Diploma in Information Technology)</h5>
         <p className='text-muted'>Advance Diploma In Information Technology is a Diploma in Automation, Financial Accounting, Graphics, PC Fundamental, Office Automation, Desktop Publishing, Programming, PC Troubleshooting, and Web Designing.</p>

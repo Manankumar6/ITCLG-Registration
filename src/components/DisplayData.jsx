@@ -1,26 +1,28 @@
 import React, { useEffect, useRef } from 'react'
 
 const DisplayData = (props) => {
-
-    const { name,  course, session, fname, image, city, card } = props.data.student
+   
+    const { name, course, session, fname, image, city, card } = props.data.student
     const capitalize = (word) => {
         return word.charAt(0).toUpperCase() + word.slice(1);
     }
 
     let currentDate = new Date().toDateString()
     let currentTime = new Date().toLocaleTimeString()
-   
+
 
     const audioRef = useRef(null);
 
     useEffect(() => {
-      if (audioRef.current) {
-        audioRef.current.play();
-      }
+        if (audioRef.current) {
+            audioRef.current.play();
+        }
     }, []);
+   
     return (
         <div>
-            <div className="container ">
+            {!props.data&& <h1 className='text-center'>No data to display</h1>}
+            <div className="container my-5 " style={{ minHeight: "100vh" }}>
 
 
                 <div className="row my-2 ">
@@ -31,7 +33,7 @@ const DisplayData = (props) => {
                             <h5 className='text-primary'>{currentDate}</h5>
                             <h5 className='fs-1 fw-bold text-primary'>{currentTime}</h5>
 
-                         
+
                         </div>
                         <hr />
                         <div className="row p-0">
@@ -47,12 +49,12 @@ const DisplayData = (props) => {
                         </div>
                         <hr />
                         <div className="row my-2 ">
-                            <img className=' border border-1 p-2 rounded-2' src={image} alt="studentimg" style={{ width: "15rem" }} />
+                            <img className=' border border-1 p-2 rounded-2' src={image} alt="studentimg" style={{ width: "10rem" }} />
                         </div>
                         <hr />
                         <hr />
-                        <audio className='mb-3' style={{width:"20rem"}}  ref={audioRef} src="/image/thankyou.wav" controls  preload="auto"></audio>
-        <hr />
+                        <audio className='mb-3' style={{ width: "20rem" }} ref={audioRef} src="/image/thankyou.wav" controls preload="auto"></audio>
+                        <hr />
                     </div>
                 </div>
             </div>
