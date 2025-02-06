@@ -12,9 +12,15 @@ const Signup = () => {
         navigate('/')
     }
    return (
-    <div className="container d-flex justify-content-center align-items-center vh-100">
-            <div className="card shadow-lg p-4" style={{ maxWidth: "400px", width: "100%" }}>
-                <h2 className="mb-4 text-center">Sign Up</h2>
+    <div className="container d-flex justify-content-center align-items-center my-5 vh-100 pb-5">
+            <div className="card shadow-lg p-4 " style={{ maxWidth: "400px", width: "100%" }}>
+            <img
+                    src='/image/logo.jpeg'
+                    alt='logo'
+                    className="rounded-circle mx-auto shadow-sm img-fluid"
+                    style={{ width: "200px", height: "200px", objectFit: "cover" }}
+                />
+                <h2 className="mb-4 text-center">Sign-up To Itcew</h2>
                 <form onSubmit={Signup}>
                     <div className="mb-3">
                         <label htmlFor="username" className="form-label">Username</label>

@@ -14,9 +14,15 @@ const Login = () => {
     }
 
     return (
-        <div className="container d-flex justify-content-center align-items-center vh-100">
+        <div className="container d-flex justify-content-center align-items-center vh-100 pb-5">
             <div className="card shadow-lg p-4" style={{ maxWidth: "400px", width: "100%" }}>
-                <h2 className="mb-4 text-center">Login</h2>
+            <img
+                    src='/image/logo.jpeg'
+                    alt='logo'
+                    className="rounded-circle mx-auto shadow-sm img-fluid"
+                    style={{ width: "200px", height: "200px", objectFit: "cover" }}
+                />
+                <h2 className="mb-4 text-center">Login To Itcew</h2>
                 <form onSubmit={Login}>
                     <div className="mb-3">
                         <label htmlFor="email" className="form-label">Email address</label>
