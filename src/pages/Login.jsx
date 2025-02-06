@@ -8,7 +8,7 @@ const Login = () => {
     const { Login, handleInput, data, isAuth } = useAuth()
     const navigate = useNavigate()
     const [showPassword, setShowPassword] = useState(false);
-
+ 
     if (isAuth) {
         navigate('/')
     }

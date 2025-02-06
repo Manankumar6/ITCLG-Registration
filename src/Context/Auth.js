@@ -55,6 +55,7 @@ const AuthProvider = ({ children }) => {
     const Login = async (e) => {
         e.preventDefault();
         dispatch({ type: 'LOADING' });
+    
         try {
             const response = await fetch(`${URL}/api/login`, {
                 method: 'POST',
@@ -64,25 +65,24 @@ const AuthProvider = ({ children }) => {
                 body: JSON.stringify(state.data),
                 credentials: 'include',
             });
-
+    
             if (response.ok) {
                 const result = await response.json();
                 dispatch({ type: 'USER_LOGIN' });
-                getUser()
-                toast.success(result.message)
-                navigate('/')
-
-
+    
+                await getUser(); // Ensure user state is updated before redirecting
+                toast.success(result.message);
+                navigate('/');
+    
             } else {
-                toast.error("Invaild Credentials")
+                toast.error("Invalid Credentials");
             }
         } catch (error) {
-            // setError(`Network error: ${error.message}`);
             console.error('Network error:', error);
-            toast.error("Internal Server Error")
-
+            toast.error("Internal Server Error");
         }
     };
+    
     const Logout = async () => {
         dispatch({ type: 'LOADING' });
         try {
@@ -90,17 +90,20 @@ const AuthProvider = ({ children }) => {
                 method: 'POST',
                 credentials: 'include',
             });
-
+    
             if (response.ok) {
-                dispatch({ type: 'USER_LOGOUT' }); // Dispatch logout action if needed
-
-                navigate('/')
+                dispatch({ type: 'USER_LOGOUT' });
+                toast.success("Logout successful");
+                navigate('/login'); 
+            } else {
+                toast.error("Failed to log out");
             }
         } catch (error) {
             console.error('Logout error:', error.message);
-            toast.error("Internal Server Error")
+            toast.error("Internal Server Error");
         }
     };
+    
     const handleInput = (e) => {
         const { name, value } = e.target;
         dispatch({ type: 'HANDLE_INPUT', payload: { name, value } });
@@ -123,10 +126,7 @@ const AuthProvider = ({ children }) => {
 
 
             }
-            //  else {
-            //     const errorResponse = await response.json();
-            //     toast.error(errorResponse.message)
-            // }
+           
 
         } catch (error) {
             // setError(`Network error: ${error.message}`);
@@ -140,7 +140,7 @@ const AuthProvider = ({ children }) => {
     useEffect(() => {
         getUser()
         // eslint-disable-next-line
-    }, [state.isSuccess])
+    }, [])
 
 
 
