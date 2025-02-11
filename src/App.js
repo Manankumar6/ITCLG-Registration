@@ -8,10 +8,13 @@ import Footer from './components/Footer';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 
-import ProtectedRoute  from './ProtectiveRoute/ProtectRoute';
+import ProtectedRoute from './ProtectiveRoute/ProtectRoute';
 
 import PromoteAdmin from './components/PromoteAdmin';
 import About from './pages/About';
+import Dashboard from './pages/Dashboard';
+import StudentRecord from './pages/StudentRecord';
+import UserRecord from './pages/UserRecord';
 
 
 function App() {
@@ -19,22 +22,26 @@ function App() {
   return (
 
     <>
-  
-    <Navbar/>
-    <Routes>
-    <Route element={<ProtectedRoute />}>
 
-    <Route  path='/register' element={<Home/>} />
-    </Route>
-    <Route path="/initial-admin" element={<PromoteAdmin/>} />
+      <Navbar />
+      <Routes>
+        <Route element={<ProtectedRoute />}>
+          <Route path='/register' element={<Home />} />
 
-    
-    <Route path='/' element={<StudentData/>} />
-    <Route path='/about' element={<About/>} />
-    <Route path='/signup' element={<Signup/>} />
-    <Route path='/login' element={<Login/>} />
-    </Routes>
-   <Footer/>
+          <Route path="/dashboard" element={<Dashboard />}>
+            <Route path="userrecord" element={<UserRecord />} />
+            <Route path="studentrecord" element={<StudentRecord />} />
+          </Route>
+        </Route>
+        <Route path="/initial-admin" element={<PromoteAdmin />} />
+
+
+        <Route path='/' element={<StudentData />} />
+        <Route path='/about' element={<About />} />
+        <Route path='/signup' element={<Signup />} />
+        <Route path='/login' element={<Login />} />
+      </Routes>
+      <Footer />
     </>
   );
 }

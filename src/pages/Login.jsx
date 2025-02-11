@@ -1,22 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useAuth } from '../Context/Auth';
 import { Link, useNavigate } from 'react-router-dom';
-import { FaRegEye ,FaRegEyeSlash} from "react-icons/fa";
+import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 
 const Login = () => {
 
-    const { Login, handleInput, data, isAuth } = useAuth()
-    const navigate = useNavigate()
+    const { Login, handleInput, data, isAuth } = useAuth();
+    const navigate = useNavigate();
     const [showPassword, setShowPassword] = useState(false);
- 
-    if (isAuth) {
-        navigate('/')
-    }
+
+    // UseEffect to handle redirection after login
+    useEffect(() => {
+        if (isAuth) {
+            navigate('/'); // Redirect to homepage if the user is authenticated
+        }
+    }, [isAuth, navigate]);  // Ensure navigate is called only when isAuth changes
 
     return (
         <div className="container d-flex justify-content-center align-items-center vh-100 pb-5">
             <div className="card shadow-lg p-4" style={{ maxWidth: "400px", width: "100%" }}>
-            <img
+                <img
                     src='/image/logo.jpeg'
                     alt='logo'
                     className="rounded-circle mx-auto shadow-sm img-fluid"
@@ -51,7 +54,7 @@ const Login = () => {
                             />
                             <button
                                 type="button"
-                                className="btn btn-primary  bg-blue"
+                                className="btn btn-primary bg-blue"
                                 onClick={() => setShowPassword(!showPassword)}
                             >
                                 {showPassword ? <FaRegEyeSlash /> : <FaRegEye />}
@@ -73,7 +76,6 @@ const Login = () => {
                 </p>
             </div>
         </div>
-
     );
 };
 

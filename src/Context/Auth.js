@@ -1,11 +1,12 @@
 import React, { createContext, useContext, useEffect, useReducer } from 'react';
 import { useNavigate } from 'react-router-dom';
 import reducer from '../Reducer/authreducer';
-import { toast } from "react-toastify"
+import { toast } from "react-toastify";
+
 const AuthContext = createContext();
 
 const initialState = {
-    isLoading: false,
+    isLoading: true,  // Set loading to true initially
     data: {
         username: "",
         email: "",
@@ -14,13 +15,12 @@ const initialState = {
     isAuth: false,
     user: {},
     isSuccess: false
-
 };
 
 const AuthProvider = ({ children }) => {
     const [state, dispatch] = useReducer(reducer, initialState);
     const navigate = useNavigate();
-    let URL = process.env.REACT_APP_API_URL
+    let URL = process.env.REACT_APP_API_URL;
 
     const Signup = async (e) => {
         e.preventDefault();
@@ -43,19 +43,17 @@ const AuthProvider = ({ children }) => {
                 navigate('/login');
             } else {
                 const errorResponse = await response.json();
-                toast.error(errorResponse.message)
-
+                toast.error(errorResponse.message);
             }
         } catch (error) {
-            toast.error("Internal Server Error")
-            // console.log('Network error:', error.message);
+            toast.error("Internal Server Error");
         }
     };
-   
+
     const Login = async (e) => {
         e.preventDefault();
         dispatch({ type: 'LOADING' });
-    
+
         try {
             const response = await fetch(`${URL}/api/login`, {
                 method: 'POST',
@@ -65,15 +63,13 @@ const AuthProvider = ({ children }) => {
                 body: JSON.stringify(state.data),
                 credentials: 'include',
             });
-    
+
             if (response.ok) {
                 const result = await response.json();
                 dispatch({ type: 'USER_LOGIN' });
-    
-                await getUser(); // Ensure user state is updated before redirecting
+                await getUser();
                 toast.success(result.message);
                 navigate('/');
-    
             } else {
                 toast.error("Invalid Credentials");
             }
@@ -82,7 +78,7 @@ const AuthProvider = ({ children }) => {
             toast.error("Internal Server Error");
         }
     };
-    
+
     const Logout = async () => {
         dispatch({ type: 'LOADING' });
         try {
@@ -90,11 +86,11 @@ const AuthProvider = ({ children }) => {
                 method: 'POST',
                 credentials: 'include',
             });
-    
+
             if (response.ok) {
                 dispatch({ type: 'USER_LOGOUT' });
                 toast.success("Logout successful");
-                navigate('/login'); 
+                navigate('/login');
             } else {
                 toast.error("Failed to log out");
             }
@@ -103,7 +99,7 @@ const AuthProvider = ({ children }) => {
             toast.error("Internal Server Error");
         }
     };
-    
+
     const handleInput = (e) => {
         const { name, value } = e.target;
         dispatch({ type: 'HANDLE_INPUT', payload: { name, value } });
@@ -120,29 +116,21 @@ const AuthProvider = ({ children }) => {
             if (response.ok) {
                 const result = await response.json();
                 if (result.success) {
-
-                    dispatch({ type: "LOAD_USER", payload: result })
+                    dispatch({ type: "LOAD_USER", payload: result });
                 }
-
-
+            } else {
+                dispatch({ type: "LOAD_USER_ERROR" });
             }
-           
-
         } catch (error) {
-            // setError(`Network error: ${error.message}`);
-            dispatch({ type: "LOAD_USER_ERROR" })
+            dispatch({ type: "LOAD_USER_ERROR" });
             console.error('Network error:', error);
-           
-
         }
     };
 
     useEffect(() => {
-        getUser()
+        getUser();
         // eslint-disable-next-line
-    }, [])
-
-
+    }, []);
 
     return (
         <AuthContext.Provider value={{ ...state, Signup, Login, Logout, handleInput }}>

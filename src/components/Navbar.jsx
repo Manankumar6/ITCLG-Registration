@@ -45,10 +45,14 @@ const Navbar = () => {
                             <button className="btn btn-outline-light w-100 w-lg-auto">About ITC</button>
                         </NavLink>
 
-                        {isAuth && (
+                        {isAuth && (<>
+
                             <NavLink to='/register' className="text-decoration-none">
                                 <button className="btn btn-outline-light w-100 w-lg-auto">Register Student</button>
                             </NavLink>
+                          
+                        </>
+                            
                         )}
 
                         {isAuth && (

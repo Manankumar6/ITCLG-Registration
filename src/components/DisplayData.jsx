@@ -21,7 +21,7 @@ const DisplayData = (props) => {
    
     return (
         <div>
-            {!props.data&& <h1 className='text-center'>No data to display</h1>}
+         
             <div className="container my-5 " style={{ minHeight: "100vh" }}>
 
 
