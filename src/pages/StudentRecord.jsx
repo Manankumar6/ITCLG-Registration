@@ -7,12 +7,12 @@ const StudentRecord = () => {
     const [loading, setLoading] = useState(true); // State to manage loading state
     const [error, setError] = useState(null); // State to handle errors
     const [searchQuery, setSearchQuery] = useState(''); // State for the search query
-
+    const URL = process.env.REACT_APP_API_URL;
     // Fetch all students data when the component mounts
     useEffect(() => {
         const fetchStudents = async () => {
             try {
-                const response = await axios.get('http://localhost:8080/api/getallstudent', { withCredentials: true });
+                const response = await axios.get(`${URL}/api/getallstudent`, { withCredentials: true });
                 setStudents(response.data.students); // Set students data
                 setFilteredStudents(response.data.students); // Set filtered students data
                 setLoading(false); // Set loading to false after data is fetched
@@ -42,7 +42,7 @@ const StudentRecord = () => {
     // Handle delete student
     const handleDelete = async (id) => {
         try {
-            await axios.delete(`http://localhost:8080/api/deletestudent/${id}`, { withCredentials: true });
+            await axios.delete(`${URL}/api/deletestudent/${id}`, { withCredentials: true });
             // After successful deletion, remove the student from the state
             setStudents(students.filter(student => student._id !== id));
             setFilteredStudents(filteredStudents.filter(student => student._id !== id)); // Also update filtered students list

@@ -5,11 +5,11 @@ const UserRecord = () => {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
+  const URL = process.env.REACT_APP_API_URL;
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await axios.get('http://localhost:8080/api/getalladmins', { withCredentials: true });
+        const response = await axios.get(`${URL}/api/getalladmins`, { withCredentials: true });
         setUsers(response.data.admins); // Set the list of users (admins) in state
         setLoading(false); // Set loading to false once data is fetched
       } catch (err) {
@@ -24,7 +24,7 @@ const UserRecord = () => {
   const deleteUser = async (id) => {
     try {
       // Send DELETE request to delete the admin
-      const response = await axios.delete(`http://localhost:8080/api/deleteadmin/${id}`, { withCredentials: true });
+      const response = await axios.delete(`${URL}/api/deleteadmin/${id}`, { withCredentials: true });
       // On success, remove the deleted user from the state
       setUsers(users.filter(user => user._id !== id));
       alert(response.data.message); // Show success message
