@@ -5,21 +5,28 @@ const UserRecord = () => {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const URL = process.env.REACT_APP_API_URL;
-  useEffect(() => {
-    const fetchUsers = async () => {
-      try {
-        const response = await axios.get(`${URL}/api/getalladmins`, { withCredentials: true });
-        setUsers(response.data.admins); // Set the list of users (admins) in state
-        setLoading(false); // Set loading to false once data is fetched
-      } catch (err) {
-        setError('Error fetching users');
-        setLoading(false);
-      }
-    };
 
-    fetchUsers();
-  }, []);
+useEffect(() => {
+  const URL = process.env.REACT_APP_API_URL;
+
+  const fetchUsers = async () => {
+    try {
+      const response = await axios.get(
+        `${URL}/api/getalladmins`,
+        { withCredentials: true }
+      );
+
+      setUsers(response.data.admins);
+      setLoading(false);
+    } catch (err) {
+      setError('Error fetching users');
+      setLoading(false);
+    }
+  };
+
+  fetchUsers();
+}, []);
+
 
   const deleteUser = async (id) => {
     try {

@@ -7,23 +7,28 @@ const StudentRecord = () => {
     const [loading, setLoading] = useState(true); // State to manage loading state
     const [error, setError] = useState(null); // State to handle errors
     const [searchQuery, setSearchQuery] = useState(''); // State for the search query
-    const URL = process.env.REACT_APP_API_URL;
-    // Fetch all students data when the component mounts
-    useEffect(() => {
-        const fetchStudents = async () => {
-            try {
-                const response = await axios.get(`${URL}/api/getallstudent`, { withCredentials: true });
-                setStudents(response.data.students); // Set students data
-                setFilteredStudents(response.data.students); // Set filtered students data
-                setLoading(false); // Set loading to false after data is fetched
-            } catch (err) {
-                setError('Error fetching students');
-                setLoading(false);
-            }
-        };
+   useEffect(() => {
+  const URL = process.env.REACT_APP_API_URL;
 
-        fetchStudents();
-    }, []);
+  const fetchStudents = async () => {
+    try {
+      const response = await axios.get(
+        `${URL}/api/getallstudent`,
+        { withCredentials: true }
+      );
+
+      setStudents(response.data.students);
+      setFilteredStudents(response.data.students);
+      setLoading(false);
+    } catch (err) {
+      setError('Error fetching students');
+      setLoading(false);
+    }
+  };
+
+  fetchStudents();
+}, []);
+
 
     // Filter students based on the search query
     useEffect(() => {
