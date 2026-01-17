@@ -3,7 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import Navbar from './components/Navbar';
 import Home from './pages/home';
-import StudentData from './pages/StudentData';
+
 import Footer from './components/Footer';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
@@ -15,6 +15,7 @@ import About from './pages/About';
 import Dashboard from './pages/Dashboard';
 import StudentRecord from './pages/StudentRecord';
 import UserRecord from './pages/UserRecord';
+import Warning from './pages/Warning';
 
 
 function App() {
@@ -36,7 +37,7 @@ function App() {
         <Route path="/initial-admin" element={<PromoteAdmin />} />
 
 
-        <Route path='/' element={<StudentData />} />
+        <Route path='/' element={<Warning />} />
         <Route path='/about' element={<About />} />
         <Route path='/signup' element={<Signup />} />
         <Route path='/login' element={<Login />} />
