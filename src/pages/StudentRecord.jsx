@@ -2,13 +2,13 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
 const StudentRecord = () => {
+    const URL = process.env.REACT_APP_API_URL;
     const [students, setStudents] = useState([]); // State to hold the students data
     const [filteredStudents, setFilteredStudents] = useState([]); // State to hold filtered student data
     const [loading, setLoading] = useState(true); // State to manage loading state
     const [error, setError] = useState(null); // State to handle errors
     const [searchQuery, setSearchQuery] = useState(''); // State for the search query
 
-    const URL = process.env.REACT_APP_API_URL;
     useEffect(() => {
 
         const fetchStudents = async () => {
@@ -28,7 +28,7 @@ const StudentRecord = () => {
         };
 
         fetchStudents();
-    }, []);
+    }, [URL]);
 
 
     // Filter students based on the search query

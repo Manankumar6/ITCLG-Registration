@@ -9,7 +9,7 @@ const Navbar = () => {
         <nav className="navbar navbar-expand-lg bg-blue" style={{ opacity: "0.9" }}>
             <div className="container">
                 {/* Brand Logo & Name Wrapper */}
-                <div className="d-flex align-items-center">
+                <NavLink to={'/'} className="d-flex align-items-center">
                     <img
                         src='/image/logo.jpeg'
                         alt='logo'
@@ -19,7 +19,7 @@ const Navbar = () => {
                     <h2 className="navbar-brand text-light fw-bolder my-auto fs-6 fs-md-4 text-nowrap">
                         IT Computer Education World
                     </h2>
-                </div>
+                </NavLink>
 
                 {/* Navbar Toggler Button for Mobile */}
                 <button

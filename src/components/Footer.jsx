@@ -58,9 +58,7 @@ const Footer = () => {
               <i className="fa-brands fa-instagram footer-social"></i>
             </Link>
 
-            <Link to="https://github.com/Manankumar6/" target="_blank">
-              <i className="fa-brands fa-github footer-social"></i>
-            </Link>
+           
           </div>
         </div>
       </div>

@@ -32,9 +32,12 @@ const Home = () => {
     const fileInputRef = useRef(null);
 
     useEffect(() => {
-        setAllowimg(isFormValid());
-    }, [data]);
+        const isValid = Object.values(data).every(
+            value => value.trim() !== ""
+        );
 
+        setAllowimg(isValid);
+    }, [data]);
 
     const uploadImgae = (e) => {
         if (!isFormValid()) {
@@ -42,7 +45,7 @@ const Home = () => {
             return;
         }
         const file = e.target.files[0]
-          if (!file) return;
+        if (!file) return;
 
         if (file) {
             const fileSizeKB = file.size / 1024
