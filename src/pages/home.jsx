@@ -16,19 +16,33 @@ const Home = () => {
         image: ""
     })
 
+    const isFormValid = () => {
+        return (
+            data.card.trim() !== "" &&
+            data.name.trim() !== "" &&
+            data.session.trim() !== "" &&
+            data.fname.trim() !== "" &&
+            data.address.trim() !== "" &&
+            data.city.trim() !== "" &&
+            data.state.trim() !== "" &&
+            data.course.trim() !== ""
+        );
+    };
+
     const fileInputRef = useRef(null);
 
     useEffect(() => {
-
-        const isFormVaild = Object.values(data).every(value => value.trim() !== "")
-
-        setAllowimg(isFormVaild)
-
-    }, [data])
+        setAllowimg(isFormValid());
+    }, [data]);
 
 
     const uploadImgae = (e) => {
+        if (!isFormValid()) {
+            toast.error("Please fill all fields before uploading image");
+            return;
+        }
         const file = e.target.files[0]
+          if (!file) return;
 
         if (file) {
             const fileSizeKB = file.size / 1024
