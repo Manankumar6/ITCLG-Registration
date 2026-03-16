@@ -14,6 +14,7 @@ import Dashboard from './pages/Dashboard';
 import StudentRecord from './pages/StudentRecord';
 import UserRecord from './pages/UserRecord';
 import StudentData from './pages/StudentData';
+import AttendanceRecord from './pages/AttendanceRecord';
 
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
             <Route path="userrecord" element={<UserRecord />} />
             <Route path="studentrecord" element={<StudentRecord />} />
           </Route>
+            <Route path="/attendancerecord" element={<AttendanceRecord />} />
         </Route>
         <Route path="/initial-admin" element={<PromoteAdmin />} />
         <Route path='/' element={<StudentData />} />

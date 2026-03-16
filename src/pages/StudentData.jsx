@@ -24,11 +24,7 @@ const StudentData = () => {
             setLoading(false)
             setData('')
         } else {
-
-
             try {
-
-
                 const URL = process.env.REACT_APP_API_URL;
                 const fetchStudentData = await fetch(`${URL}/api/getstudent`, {
                     method: "POST",
@@ -40,6 +36,25 @@ const StudentData = () => {
                 const response = await fetchStudentData.json()
 
                 if (fetchStudentData.ok) {
+
+                    // call attendance API after student is found
+                    const markAttendance = await fetch(`${URL}/api/markattendance`, {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({ cardId: card.cardId })
+                    })
+
+                    const attendanceResponse = await markAttendance.json()
+
+                    if (markAttendance.ok) {
+                        toast.success(attendanceResponse.message || "Attendance marked successfully")
+                    } else {
+                        toast.error(attendanceResponse.message)
+                    }
+
+
                     setCard({
                         cardId: ""
                     })

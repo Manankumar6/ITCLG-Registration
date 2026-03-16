@@ -50,9 +50,12 @@ const Navbar = () => {
                             <NavLink to='/register' className="text-decoration-none">
                                 <button className="btn btn-outline-light w-100 w-lg-auto">Register Student</button>
                             </NavLink>
-                          
+                            <NavLink to='/attendancerecord' className="text-decoration-none">
+                                <button className="btn btn-outline-light w-100 w-lg-auto">Attendance Record</button>
+                            </NavLink>
+
                         </>
-                            
+
                         )}
 
                         {isAuth && (
