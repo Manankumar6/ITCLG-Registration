@@ -7,6 +7,7 @@ const AdminAttendance = () => {
     const [loading, setLoading] = useState(true);
     const [filter, setFilter] = useState("today");
     const [type, setType] = useState("today");
+    const [search, setSearch] = useState("");
 
     const URL = process.env.REACT_APP_API_URL;
 
@@ -17,7 +18,7 @@ const AdminAttendance = () => {
 
         try {
             const res = await fetch(
-                `${URL}/api/getattendance?filter=${filter}`,
+               `${URL}/api/getattendance?filter=${filter}&card=${search}`,
                 {
                     method: "GET",
                     credentials: "include",
@@ -52,7 +53,15 @@ const AdminAttendance = () => {
     return (
         <div className="container my-4">
             <h2 className="text-center mb-4">Student Attendance Records</h2>
-
+        <div className="d-flex justify-content-center mb-3">
+  <input
+    type="text"
+    placeholder="Search by Card ID"
+    className="form-control w-auto"
+    value={search}
+    onChange={(e) => setSearch(e.target.value)}
+  />
+</div>
             {/* FILTER BUTTONS */}
 
             <div className="d-flex justify-content-center gap-2 mb-4 flex-wrap">
