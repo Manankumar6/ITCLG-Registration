@@ -11,57 +11,57 @@ const AdminAttendance = () => {
 
     const URL = process.env.REACT_APP_API_URL;
 
-   useEffect(() => {
+    useEffect(() => {
 
-    const fetchAttendance = async () => {
-        setLoading(true);
+        const fetchAttendance = async () => {
+            setLoading(true);
 
-        try {
-            const res = await fetch(
-               `${URL}/api/getattendance?filter=${filter}&card=${search}`,
-                {
-                    method: "GET",
-                    credentials: "include",
-                }
-            );
+            try {
+                const res = await fetch(
+                    `${URL}/api/getattendance?filter=${filter}&card=${search}`,
+                    {
+                        method: "GET",
+                        credentials: "include",
+                    }
+                );
 
-            const data = await res.json();
+                const data = await res.json();
 
-            if (res.ok) {
-                if (data.type === "today") {
-                    setAttendance(data.attendance);
-                    setType("today");
+                if (res.ok) {
+                    if (data.type === "today") {
+                        setAttendance(data.attendance);
+                        setType("today");
+                    } else {
+                        setAttendance(data.data);
+                        setType("summary");
+                    }
                 } else {
-                    setAttendance(data.data);
-                    setType("summary");
+                    toast.error(data.message);
                 }
-            } else {
-                toast.error(data.message);
+
+            } catch (error) {
+                console.log(error);
+                toast.error("Error fetching attendance");
+            } finally {
+                setLoading(false);
             }
+        };
 
-        } catch (error) {
-            console.log(error);
-            toast.error("Error fetching attendance");
-        } finally {
-            setLoading(false);
-        }
-    };
+        fetchAttendance();
 
-    fetchAttendance();
-
-}, [filter, URL]);
+    }, [filter, URL, search]);
     return (
         <div className="container my-4">
             <h2 className="text-center mb-4">Student Attendance Records</h2>
-        <div className="d-flex justify-content-center mb-3">
-  <input
-    type="text"
-    placeholder="Search by Card ID"
-    className="form-control w-auto"
-    value={search}
-    onChange={(e) => setSearch(e.target.value)}
-  />
-</div>
+            <div className="d-flex justify-content-center mb-3">
+                <input
+                    type="text"
+                    placeholder="Search by Card ID"
+                    className="form-control w-auto"
+                    value={search}
+                    onChange={(e) => setSearch(e.target.value)}
+                />
+            </div>
             {/* FILTER BUTTONS */}
 
             <div className="d-flex justify-content-center gap-2 mb-4 flex-wrap">
@@ -131,8 +131,8 @@ const AdminAttendance = () => {
                                                 <td>
                                                     <span
                                                         className={`badge ${item.status === "present"
-                                                                ? "bg-success"
-                                                                : "bg-danger"
+                                                            ? "bg-success"
+                                                            : "bg-danger"
                                                             }`}
                                                     >
                                                         {item.status}
