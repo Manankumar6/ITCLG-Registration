@@ -1,6 +1,6 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, {  useState, useRef } from 'react';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+
 import html2canvas from 'html2canvas';
 
 const CertificateView = () => {
