@@ -1,29 +1,34 @@
-
 import { NavLink } from 'react-router-dom';
 import { useAuth } from '../Context/Auth';
 
 const Navbar = () => {
     const { isAuth, Logout } = useAuth();
 
+    // Helper to close the menu on mobile after clicking a link
+    const closeMenu = () => {
+        const menu = document.getElementById('navbarNav');
+        if (menu.classList.contains('show')) {
+            new window.bootstrap.Collapse(menu).hide();
+        }
+    };
+
     return (
-        <nav className="navbar navbar-expand-lg bg-blue" style={{ opacity: "0.9" }}>
+        <nav className="navbar navbar-expand-lg bg-blue sticky-top shadow-sm" style={{ opacity: "0.95" }}>
             <div className="container">
-                {/* Brand Logo & Name Wrapper */}
-                <NavLink to={'/'} className="d-flex align-items-center">
+                {/* Brand Logo & Name */}
+                <NavLink to={'/'} className="navbar-brand d-flex align-items-center" onClick={closeMenu}>
                     <img
                         src='/image/logo.jpeg'
                         alt='logo'
-                        className="rounded-circle shadow-sm img-fluid me-2"
-                        style={{ width: "45px", height: "45px", objectFit: "cover" }}
+                        className="rounded-circle me-2"
+                        style={{ width: "40px", height: "40px", objectFit: "cover", border: "2px solid white" }}
                     />
-                    <h2 className="navbar-brand text-light fw-bolder my-auto fs-6 fs-md-4 text-nowrap">
-                        IT Computer Education World
-                    </h2>
+                    <span className="text-light fw-bold fs-6 fs-md-5">   IT Computer Education World</span>
                 </NavLink>
 
-                {/* Navbar Toggler Button for Mobile */}
+                {/* Mobile Toggler */}
                 <button
-                    className="navbar-toggler btn-sm p-1"
+                    className="navbar-toggler border-white"
                     type="button"
                     data-bs-toggle="collapse"
                     data-bs-target="#navbarNav"
@@ -31,41 +36,44 @@ const Navbar = () => {
                     aria-expanded="false"
                     aria-label="Toggle navigation"
                 >
-                    <span className="navbar-toggler-icon" style={{ width: '20px', height: '20px' }}></span>
+                    <span className="navbar-toggler-icon" style={{ filter: 'invert(1)' }}></span>
                 </button>
 
-                {/* Navbar Links */}
-                <div className="collapse navbar-collapse justify-content-lg-end mt-2 mt-lg-0" id="navbarNav">
-                    <div className="d-flex flex-column flex-lg-row gap-2 align-items-lg-center">
-                        <NavLink to='/' className="text-decoration-none">
-                            <button className="btn btn-outline-light w-100 w-lg-auto">Home</button>
-                        </NavLink>
-
-                        <NavLink to='/about' className="text-decoration-none">
-                            <button className="btn btn-outline-light w-100 w-lg-auto">About ITC</button>
-                        </NavLink>
-
-                        {isAuth && (<>
-
-                            <NavLink to='/register' className="text-decoration-none">
-                                <button className="btn btn-outline-light w-100 w-lg-auto">Register Student</button>
-                            </NavLink>
-                            <NavLink to='/attendancerecord' className="text-decoration-none">
-                                <button className="btn btn-outline-light w-100 w-lg-auto">Attendance Record</button>
-                            </NavLink>
-
-                        </>
-
-                        )}
+                {/* Links Wrapper */}
+                <div className="collapse navbar-collapse" id="navbarNav">
+                    <ul className="navbar-nav ms-auto gap-1 mt-3 mt-lg-0 align-items-lg-center">
+                        <li className="nav-item">
+                            <NavLink to='/' className="nav-link text-light px-3" onClick={closeMenu}>Home</NavLink>
+                        </li>
+                        <li className="nav-item">
+                            <NavLink to='/about' className="nav-link text-light px-3" onClick={closeMenu}>About</NavLink>
+                        </li>
 
                         {isAuth && (
-                            <NavLink to='/logout' className="text-decoration-none">
-                                <button className="btn btn-outline-light w-100 w-lg-auto" onClick={Logout}>
-                                    Log out
-                                </button>
-                            </NavLink>
+                            <>
+                                <li className="nav-item">
+                                    <NavLink to='/register' className="nav-link text-light px-3" onClick={closeMenu}>Register</NavLink>
+                                </li>
+                                <li className="nav-item">
+                                    <NavLink to='/attendancerecord' className="nav-link text-light px-3" onClick={closeMenu}>Attendance</NavLink>
+                                </li>
+                                <li className="nav-item">
+                                    <NavLink to='/studentrecord-update' className="nav-link text-light px-3" onClick={closeMenu}>Records</NavLink>
+                                </li>
+                                <li className="nav-item">
+                                    <NavLink to='/certificateview' className="nav-link text-light px-3" onClick={closeMenu}>Certificates</NavLink>
+                                </li>
+                                <li className="nav-item ms-lg-2">
+                                    <button 
+                                        className="btn btn-sm btn-danger w-100 w-lg-auto px-3 rounded-pill shadow-sm" 
+                                        onClick={() => { Logout(); closeMenu(); }}
+                                    >
+                                        Logout
+                                    </button>
+                                </li>
+                            </>
                         )}
-                    </div>
+                    </ul>
                 </div>
             </div>
         </nav>

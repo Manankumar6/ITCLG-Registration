@@ -15,6 +15,8 @@ import StudentRecord from './pages/StudentRecord';
 import UserRecord from './pages/UserRecord';
 import StudentData from './pages/StudentData';
 import AttendanceRecord from './pages/AttendanceRecord';
+import StudentUpdate from './pages/StudentUpdate';
+import CertificateView from './pages/CertificateView';
 
 
 function App() {
@@ -32,11 +34,13 @@ function App() {
             <Route path="userrecord" element={<UserRecord />} />
             <Route path="studentrecord" element={<StudentRecord />} />
           </Route>
-            <Route path="/attendancerecord" element={<AttendanceRecord />} />
+          <Route path="studentrecord-update" element={<StudentUpdate />} />
+          <Route path="/attendancerecord" element={<AttendanceRecord />} />
         </Route>
         <Route path="/initial-admin" element={<PromoteAdmin />} />
         <Route path='/' element={<StudentData />} />
         <Route path='/about' element={<About />} />
+        <Route path='/certificateview' element={<CertificateView />} />
         <Route path='/signup' element={<Signup />} />
         <Route path='/login' element={<Login />} />
       </Routes>
