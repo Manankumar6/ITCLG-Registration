@@ -18,6 +18,8 @@ const StudentRecords = () => {
     // FETCH RECORDS
     // ====================================
 
+   useEffect(() => {
+
     const fetchRecords = async () => {
 
         try {
@@ -35,23 +37,15 @@ const StudentRecords = () => {
 
             console.log(error);
 
-            alert(
-                error.response?.data?.message ||
-                'Failed to load records'
-            );
-
         } finally {
 
             setLoading(false);
         }
     };
 
-    useEffect(() => {
-        fetchRecords();
-         // eslint-disable-next-line
+    fetchRecords();
 
-    }, []);
-
+}, [API_URL]);
     // ====================================
     // HANDLE CHANGE
     // ====================================
