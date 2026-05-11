@@ -47,8 +47,8 @@ const StudentRecords = () => {
     };
 
     useEffect(() => {
-
         fetchRecords();
+         // eslint-disable-next-line
 
     }, []);
 
