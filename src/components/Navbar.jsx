@@ -14,7 +14,7 @@ const Navbar = () => {
 
     return (
         <nav className="navbar navbar-expand-lg bg-blue sticky-top shadow-sm" style={{ opacity: "0.95" }}>
-            <div className="container">
+            <div className="container p-0">
                 {/* Brand Logo & Name */}
                 <NavLink to={'/'} className="navbar-brand d-flex align-items-center" onClick={closeMenu}>
                     <img
@@ -42,9 +42,9 @@ const Navbar = () => {
                 {/* Links Wrapper */}
                 <div className="collapse navbar-collapse" id="navbarNav">
                     <ul className="navbar-nav ms-auto gap-1 mt-3 mt-lg-0 align-items-lg-center">
-                        <li className="nav-item">
+                        {/* <li className="nav-item">
                             <NavLink to='/' className="nav-link text-light px-3" onClick={closeMenu}>Home</NavLink>
-                        </li>
+                        </li> */}
                         <li className="nav-item">
                             <NavLink to='/about' className="nav-link text-light px-3" onClick={closeMenu}>About</NavLink>
                         </li>
@@ -61,7 +61,10 @@ const Navbar = () => {
                                     <NavLink to='/studentrecord-update' className="nav-link text-light px-3" onClick={closeMenu}>Records</NavLink>
                                 </li>
                                 <li className="nav-item">
-                                    <NavLink to='/certificateview' className="nav-link text-light px-3" onClick={closeMenu}>Certificates</NavLink>
+                                    <NavLink to='/certificateview' className="nav-link text-light px-3" onClick={closeMenu}>Verify Certificates</NavLink>
+                                </li>
+                                <li className="nav-item">
+                                    <NavLink to='/certificaterecord' className="nav-link text-light px-3" onClick={closeMenu}>Certificates Record</NavLink>
                                 </li>
                                 <li className="nav-item ms-lg-2">
                                     <button 

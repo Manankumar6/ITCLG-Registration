@@ -17,6 +17,7 @@ import UserRecord from './pages/UserRecord';
 import AttendanceRecord from './pages/AttendanceRecord';
 import StudentUpdate from './pages/StudentUpdate';
 import CertificateView from './pages/CertificateView';
+import CertificateRecord from './pages/CertificateRecord';
 
 
 function App() {
@@ -42,6 +43,8 @@ function App() {
         <Route path='/' element={<CertificateView />} />
         <Route path='/about' element={<About />} />
         <Route path='/certificateview' element={<CertificateView />} />
+        <Route path='/certificaterecord' element={<CertificateRecord />} />
+
         <Route path='/signup' element={<Signup />} />
         <Route path='/login' element={<Login />} />
       </Routes>

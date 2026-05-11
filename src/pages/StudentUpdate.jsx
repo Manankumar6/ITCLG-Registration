@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { NavLink } from 'react-router-dom';
 
 const StudentUpdate = () => {
     const API_URL = process.env.REACT_APP_API_URL;
@@ -199,6 +200,7 @@ const StudentUpdate = () => {
     return (
         <div className="container py-5">
             <div className="row justify-content-center">
+           
                 <div className="col-lg-9">
                     <h2 className="text-center mb-4 fw-bold">Student Records Portal</h2>
 
