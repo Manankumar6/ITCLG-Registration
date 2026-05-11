@@ -8,7 +8,7 @@ const StudentUpdate = () => {
     const [cardId, setCardId] = useState('');
     const [student, setStudent] = useState(null);
     const [loading, setLoading] = useState(false);
-    const [previewImage, setPreviewImage] =    useState('');
+    const [previewImage, setPreviewImage] = useState('');
     // --- Form States for Result Model ---
     const [dob, setDob] = useState('');
     const [serial, setSerial] = useState('');
@@ -108,6 +108,10 @@ const StudentUpdate = () => {
         const payload = {
             studentObjectId: student._id, // Internal Reference
             studentId: student.card,      // Admin Input Reference
+
+            studentName: student.name,
+            fatherName: student.fname,
+            
             dob,
             serialNo: serial,
             completionDate: compDate,
@@ -132,66 +136,66 @@ const StudentUpdate = () => {
         }
     };
 
-const handleImageUpdate = async (e) => {
+    const handleImageUpdate = async (e) => {
 
-    const file = e.target.files[0];
+        const file = e.target.files[0];
 
-    if (!file) return;
+        if (!file) return;
 
-    // Check File Size
-    const fileSizeKB = file.size / 1024;
+        // Check File Size
+        const fileSizeKB = file.size / 1024;
 
-    // Limit 40KB
-    if (fileSizeKB > 40) {
+        // Limit 40KB
+        if (fileSizeKB > 40) {
 
-        alert("Image size should be less than 40KB");
+            alert("Image size should be less than 40KB");
 
-        return;
-    }
-
-    // Preview Image
-    const render = new FileReader();
-
-    render.readAsDataURL(file);
-
-    render.onload = async () => {
-
-        // Local Preview
-        setPreviewImage(render.result);
-
-        try {
-
-            const res = await axios.post(
-                `${API_URL}/api/update-student-image`,
-                {
-                    studentId: student._id,
-                    image: render.result
-                },
-                {
-                    withCredentials: true
-                }
-            );
-
-            // Update Student Image
-            setStudent({
-                ...student,
-                image: res.data.image
-            });
-
-            // Remove Preview After Save
-            setPreviewImage('');
-
-            alert("Image Updated Successfully");
-
-        } catch (error) {
-
-            alert(
-                error.response?.data?.message ||
-                "Upload Failed"
-            );
+            return;
         }
+
+        // Preview Image
+        const render = new FileReader();
+
+        render.readAsDataURL(file);
+
+        render.onload = async () => {
+
+            // Local Preview
+            setPreviewImage(render.result);
+
+            try {
+
+                const res = await axios.post(
+                    `${API_URL}/api/update-student-image`,
+                    {
+                        studentId: student._id,
+                        image: render.result
+                    },
+                    {
+                        withCredentials: true
+                    }
+                );
+
+                // Update Student Image
+                setStudent({
+                    ...student,
+                    image: res.data.image
+                });
+
+                // Remove Preview After Save
+                setPreviewImage('');
+
+                alert("Image Updated Successfully");
+
+            } catch (error) {
+
+                alert(
+                    error.response?.data?.message ||
+                    "Upload Failed"
+                );
+            }
+        };
     };
-};
     return (
         <div className="container py-5">
             <div className="row justify-content-center">
@@ -226,7 +230,24 @@ const handleImageUpdate = async (e) => {
                     {student && (
                         <div className="card shadow border-0 overflow-hidden">
                             <div className="card-header bg-dark text-white d-flex justify-content-between align-items-center py-3">
-                                <h5 className="mb-0">Academic Profile: {student.name}</h5>
+                                <div className="w-100">
+
+                                    <small className="text-light">
+                                        Student Name
+                                    </small>
+
+                                    <input
+                                        type="text"
+                                        className="form-control fw-bold w-50"
+                                        value={student.name || ''}
+                                        onChange={(e) =>
+                                            setStudent({
+                                                ...student,
+                                                name: e.target.value
+                                            })
+                                        }
+                                    />
+                                </div>
                                 <span className="badge bg-info text-dark">ID: {student.card}</span>
                             </div>
 
@@ -247,7 +268,7 @@ const handleImageUpdate = async (e) => {
                                             type="file"
                                             className="form-control"
                                             accept="image/*"
-                                           onChange={handleImageUpdate}
+                                            onChange={handleImageUpdate}
                                         />
                                     </div>
 
@@ -255,7 +276,17 @@ const handleImageUpdate = async (e) => {
                                         <div className="row g-2">
                                             <div className="col-6">
                                                 <small className="text-muted">Father:</small>
-                                                <p className="mb-1 fw-bold">{student.fname}</p>
+                                                <input
+                                                    type="text"
+                                                    className="form-control fw-bold"
+                                                    value={student.fname || ''}
+                                                    onChange={(e) =>
+                                                        setStudent({
+                                                            ...student,
+                                                            fname: e.target.value
+                                                        })
+                                                    }
+                                                />
                                             </div>
 
                                             <div className="col-6">
