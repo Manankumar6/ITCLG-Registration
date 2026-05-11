@@ -18,34 +18,34 @@ const StudentRecords = () => {
     // FETCH RECORDS
     // ====================================
 
-   useEffect(() => {
+    useEffect(() => {
 
-    const fetchRecords = async () => {
+        const fetchRecords = async () => {
 
-        try {
+            try {
 
-            const res = await axios.get(
-                `${API_URL}/api/all-student-records`,
-                {
-                    withCredentials: true
-                }
-            );
+                const res = await axios.get(
+                    `${API_URL}/api/all-student-records`,
+                    {
+                        withCredentials: true
+                    }
+                );
 
-            setRecords(res.data.records || []);
+                setRecords(res.data.records || []);
 
-        } catch (error) {
+            } catch (error) {
 
-            console.log(error);
+                console.log(error);
 
-        } finally {
+            } finally {
 
-            setLoading(false);
-        }
-    };
+                setLoading(false);
+            }
+        };
 
-    fetchRecords();
+        fetchRecords();
 
-}, [API_URL]);
+    }, [API_URL]);
     // ====================================
     // HANDLE CHANGE
     // ====================================
@@ -106,7 +106,7 @@ const StudentRecords = () => {
 
                 studentName: item.student?.name,
                 fatherName: item.student?.fname,
-
+                
                 course: item.student?.course,
                 session: item.student?.session,
                 city: item.student?.city,
@@ -449,14 +449,12 @@ const StudentRecords = () => {
                                                     </td>
 
                                                     {/* SESSION */}
-
                                                     <td>
 
                                                         {editRow === item._id ? (
 
-                                                            <input
-                                                                type="text"
-                                                                className="form-control form-control-sm"
+                                                            <select
+                                                                className="form-select form-select-sm"
                                                                 value={student?.session || ''}
                                                                 onChange={(e) =>
                                                                     handleChange(
@@ -466,16 +464,33 @@ const StudentRecords = () => {
                                                                         e.target.value
                                                                     )
                                                                 }
-                                                            />
+                                                            >
+
+                                                                <option value="">
+                                                                    Select Session
+                                                                </option>
+
+                                                                <option value="First">
+                                                                    First 
+                                                                </option>
+
+                                                                <option value="Second">
+                                                                    Second 
+                                                                </option>
+
+                                                            </select>
 
                                                         ) : (
 
-                                                            student?.session
+                                                            <span className="fw-semibold">
+
+                                                                {student?.session}
+
+                                                            </span>
 
                                                         )}
 
                                                     </td>
-
                                                     {/* CITY */}
 
                                                     <td>
