@@ -13,7 +13,7 @@ import About from './pages/About';
 import Dashboard from './pages/Dashboard';
 import StudentRecord from './pages/StudentRecord';
 import UserRecord from './pages/UserRecord';
-import StudentData from './pages/StudentData';
+// import StudentData from './pages/StudentData';
 import AttendanceRecord from './pages/AttendanceRecord';
 import StudentUpdate from './pages/StudentUpdate';
 import CertificateView from './pages/CertificateView';
