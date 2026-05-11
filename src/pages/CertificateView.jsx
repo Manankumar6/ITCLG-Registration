@@ -52,7 +52,7 @@ const CertificateView = () => {
 
     return (
         <div className="container py-5">
-            <h2 className="text-center mb-4 fw-bold">Certificate Generation Center</h2>
+            <h2 className="text-center mb-4 fw-bold">Verify Certificate </h2>
 
             {/* --- Search Section --- */}
             <div className="row justify-content-center mb-5">

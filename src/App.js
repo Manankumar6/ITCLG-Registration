@@ -38,7 +38,8 @@ function App() {
           <Route path="/attendancerecord" element={<AttendanceRecord />} />
         </Route>
         <Route path="/initial-admin" element={<PromoteAdmin />} />
-        <Route path='/' element={<StudentData />} />
+        {/* <Route path='/' element={<StudentData />} /> */}
+        <Route path='/' element={<CertificateView />} />
         <Route path='/about' element={<About />} />
         <Route path='/certificateview' element={<CertificateView />} />
         <Route path='/signup' element={<Signup />} />
