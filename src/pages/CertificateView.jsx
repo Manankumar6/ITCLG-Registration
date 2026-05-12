@@ -7,7 +7,7 @@ const CertificateView = () => {
   const [cardId, setCardId] = useState('');
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(false);
-    
+
     // Separate refs for each document
     const diplomaRef = useRef(null);
     const marksheetRef = useRef(null);
@@ -240,7 +240,7 @@ const CertificateView = () => {
 
                             {/* 4. Personality Development Remark - Condition: Check if hasPersonalityCertificate is true */}
                             <div style={{ position: 'absolute', top: '52.8%', right: '12%', transform: 'translateX(-50%)', fontSize: '16px' }}>
-                                {data.hasPersonalityCertificate ? "P" : "Re"}
+                                {Number(data?.personalityProject) >= 20 ? "P" : "Re"}
                             </div>
 
                             {/* --- QR CODE & SIGNATURE AREA --- */}
