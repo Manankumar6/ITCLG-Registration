@@ -49,7 +49,15 @@ const CertificateView = () => {
             }
         }
     };
+const getFontSize = (text) => {
+    if (!text) return "11px";
 
+    if (text.length > 22) return "8px";
+    if (text.length > 18) return "9px";
+    if (text.length > 14) return "10px";
+
+    return "11px";
+};
     return (
         <div className="container py-5">
             <h2 className="text-center mb-4 fw-bold">Verify Certificate </h2>
@@ -184,11 +192,11 @@ const CertificateView = () => {
                                 {data.studentId}
                             </div>
                             {/* Student Name */}
-                            <div style={{ position: 'absolute', top: '27.5%', left: '55%', transform: 'translateX(-50%)', fontSize: '11px', fontWeight: 'bold' }}>
+                            <div style={{ position: 'absolute', top: '27.5%', left: '55%', transform: 'translateX(-50%)',   fontSize: getFontSize(data.student.name), fontWeight: 'bold' }}>
                                 {data.student.name}
                             </div>
                             {/* Father Name */}
-                            <div style={{ position: 'absolute', top: '27.5%', left: '74%', transform: 'translateX(-50%)', fontSize: '11px' }}>
+                            <div style={{ position: 'absolute', top: '27.5%', left: '74%', transform: 'translateX(-50%)',   fontSize: getFontSize(data.student.name), }}>
                                 {data.student.fname}
                             </div>
                             {/* Year */}
