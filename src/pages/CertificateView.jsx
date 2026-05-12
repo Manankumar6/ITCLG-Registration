@@ -127,7 +127,7 @@ const CertificateView = () => {
                                 {data.dob}
                             </div>
                             {/* Serial No */}
-                            <div style={{ position: 'absolute', top: '55%', left: '78%', fontSize: '15px' }}>
+                            <div style={{ position: 'absolute', top: '55%', left: '77%', fontSize: '13px' }}>
                                 {data.serialNo}
                             </div>
 
@@ -172,27 +172,27 @@ const CertificateView = () => {
                         >
                             {/* --- TOP HEADER DETAILS --- */}
                             {/* Branch */}
-                            <div style={{ position: 'absolute', top: '27.5%', left: '12%', transform: 'translateX(-50%)', fontSize: '13px' }}>
+                            <div style={{ position: 'absolute', top: '27.5%', left: '12%', transform: 'translateX(-50%)', fontSize: '11px' }}>
                                 {data.student.city}
                             </div>
                             {/* Serial No */}
-                            <div style={{ position: 'absolute', top: '27.5%', left: '23.5%', transform: 'translateX(-50%)', fontSize: '13px' }}>
+                            <div style={{ position: 'absolute', top: '27.5%', left: '23.5%', transform: 'translateX(-50%)', fontSize: '11px' }}>
                                 {data.serialNo}
                             </div>
                             {/* Student ID */}
-                            <div style={{ position: 'absolute', top: '27.5%', left: '37.5%', transform: 'translateX(-50%)', fontSize: '13px', fontWeight: 'bold' }}>
+                            <div style={{ position: 'absolute', top: '27.5%', left: '37.5%', transform: 'translateX(-50%)', fontSize: '11px', fontWeight: 'bold' }}>
                                 {data.studentId}
                             </div>
                             {/* Student Name */}
-                            <div style={{ position: 'absolute', top: '27.5%', left: '55%', transform: 'translateX(-50%)', fontSize: '13px', fontWeight: 'bold' }}>
+                            <div style={{ position: 'absolute', top: '27.5%', left: '55%', transform: 'translateX(-50%)', fontSize: '11px', fontWeight: 'bold' }}>
                                 {data.student.name}
                             </div>
                             {/* Father Name */}
-                            <div style={{ position: 'absolute', top: '27.5%', left: '74%', transform: 'translateX(-50%)', fontSize: '13px' }}>
+                            <div style={{ position: 'absolute', top: '27.5%', left: '74%', transform: 'translateX(-50%)', fontSize: '11px' }}>
                                 {data.student.fname}
                             </div>
                             {/* Year */}
-                            <div style={{ position: 'absolute', top: '27.5%', left: '88%', transform: 'translateX(-50%)', fontSize: '13px' }}>
+                            <div style={{ position: 'absolute', top: '27.5%', left: '88%', transform: 'translateX(-50%)', fontSize: '11px' }}>
                                 {new Date(data.completionDate).getFullYear()}
                             </div>
 
