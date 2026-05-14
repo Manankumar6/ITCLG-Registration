@@ -122,7 +122,7 @@ const getFontSize = (text) => {
 
                             {/* 3. Student Photo */}
                             <div style={{ position: 'absolute', top: '24.8%', right: '16.2%', width: '108px', height: '123px', border: '1px solid #ddd' }}>
-                                <img src={data.student.image} alt="Student" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                                <img src={data.student.image} alt="Student" style={{ width: '100%', height: '100%', objectFit: 'center' }} />
                             </div>
 
                             {/* 4. Details Table Row 1 */}
