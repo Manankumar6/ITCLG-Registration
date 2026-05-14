@@ -127,29 +127,29 @@ const getFontSize = (text) => {
 
                             {/* 4. Details Table Row 1 */}
                             {/* Father Name */}
-                            <div style={{ position: 'absolute', top: '55%', left: '26.5%', fontSize: '15px', fontWeight: '500' }}>
+                            <div  className='text-uppercase' style={{ position: 'absolute', top: '55.5%', left: '26.5%', fontSize: '14px', fontWeight: '500' }}>
                                 {data.student.fname}
                             </div>
                             {/* DOB */}
-                            <div style={{ position: 'absolute', top: '55%', left: '59%', fontSize: '15px' }}>
+                            <div style={{ position: 'absolute', top: '55.5%', left: '59%', fontSize: '15px' }}>
                                 {data.dob}
                             </div>
                             {/* Serial No */}
-                            <div style={{ position: 'absolute', top: '55%', left: '77%', fontSize: '13px' }}>
+                            <div style={{ position: 'absolute', top: '55.5%', left: '77%', fontSize: '13px' }}>
                                 {data.serialNo}
                             </div>
 
                             {/* 5. Details Table Row 2 */}
                             {/* Duration */}
-                            <div style={{ position: 'absolute', top: '58.5%', left: '26.5%', fontSize: '15px' }}>
+                            <div style={{ position: 'absolute', top: '59%', left: '26.5%', fontSize: '15px' }}>
                                 {data.duration}
                             </div>
                             {/* Completion Date */}
-                            <div style={{ position: 'absolute', top: '58.5%', left: '59%', fontSize: '15px' }}>
+                            <div style={{ position: 'absolute', top: '59%', left: '59%', fontSize: '15px' }}>
                                 {new Date(data.completionDate).toLocaleDateString('en-GB')}
                             </div>
                             {/* Place */}
-                            <div style={{ position: 'absolute', top: '58.5%', left: '78%', fontSize: '15px' }}>
+                            <div className='text-uppercase' style={{ position: 'absolute', top: '59%', left: '78%', fontSize: '15px' }}>
                                 {data.student.city}
                             </div>
 
@@ -180,7 +180,7 @@ const getFontSize = (text) => {
                         >
                             {/* --- TOP HEADER DETAILS --- */}
                             {/* Branch */}
-                            <div style={{ position: 'absolute', top: '27.5%', left: '12%', transform: 'translateX(-50%)', fontSize: '11px' }}>
+                            <div className='text-uppercase' style={{ position: 'absolute', top: '27.5%', left: '12%', transform: 'translateX(-50%)', fontSize: '11px' }}>
                                 {data.student.city}
                             </div>
                             {/* Serial No */}
@@ -192,11 +192,11 @@ const getFontSize = (text) => {
                                 {data.studentId}
                             </div>
                             {/* Student Name */}
-                            <div style={{ position: 'absolute', top: '27.5%', left: '55%', transform: 'translateX(-50%)',   fontSize: getFontSize(data.student.name), fontWeight: 'bold' }}>
+                            <div className='text-uppercase' style={{ position: 'absolute', top: '27.5%', left: '55%', transform: 'translateX(-50%)',   fontSize: getFontSize(data.student.name), fontWeight: 'bold' }}>
                                 {data.student.name}
                             </div>
                             {/* Father Name */}
-                            <div style={{ position: 'absolute', top: '27.5%', left: '74%', transform: 'translateX(-50%)',   fontSize: getFontSize(data.student.name), }}>
+                            <div className='text-uppercase' style={{ position: 'absolute', top: '27.5%', left: '74%', transform: 'translateX(-50%)',   fontSize: getFontSize(data.student.fname), }}>
                                 {data.student.fname}
                             </div>
                             {/* Year */}
@@ -282,7 +282,7 @@ const getFontSize = (text) => {
                             </div>
 
                             {/* City */}
-                            <div style={{ position: 'absolute', top: '25.2%', left: '16%', fontSize: '15px' }}>
+                            <div className='text-uppercase' style={{ position: 'absolute', top: '25.2%', left: '16%', fontSize: '15px' }}>
                                 {data.student.city}
                             </div>
 
