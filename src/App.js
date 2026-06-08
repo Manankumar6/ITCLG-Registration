@@ -13,7 +13,7 @@ import About from './pages/About';
 import Dashboard from './pages/Dashboard';
 import StudentRecord from './pages/StudentRecord';
 import UserRecord from './pages/UserRecord';
-// import StudentData from './pages/StudentData';
+import StudentData from './pages/StudentData';
 import AttendanceRecord from './pages/AttendanceRecord';
 import StudentUpdate from './pages/StudentUpdate';
 import CertificateView from './pages/CertificateView';
@@ -30,7 +30,7 @@ function App() {
       <Routes>
         <Route element={<ProtectedRoute />}>
           <Route path='/register' element={<Home />} />
-
+        <Route path='/attendance' element={<StudentData />} />
           <Route path="/dashboard" element={<Dashboard />}>
             <Route path="userrecord" element={<UserRecord />} />
             <Route path="studentrecord" element={<StudentRecord />} />
@@ -39,7 +39,7 @@ function App() {
           <Route path="/attendancerecord" element={<AttendanceRecord />} />
         </Route>
         <Route path="/initial-admin" element={<PromoteAdmin />} />
-        {/* <Route path='/' element={<StudentData />} /> */}
+      
         <Route path='/' element={<CertificateView />} />
         <Route path='/about' element={<About />} />
         <Route path='/certificateview' element={<CertificateView />} />

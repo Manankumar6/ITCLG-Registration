@@ -127,7 +127,7 @@ const getFontSize = (text) => {
 
                             {/* 4. Details Table Row 1 */}
                             {/* Father Name */}
-                            <div  className='text-uppercase' style={{ position: 'absolute', top: '55.5%', left: '26.5%', fontSize: '14px', fontWeight: '500' }}>
+                            <div  className='text-uppercase' style={{ position: 'absolute', top: '55.5%', left: '26.5%', fontSize: '11px', fontWeight: '500' }}>
                                 {data.student.fname}
                             </div>
                             {/* DOB */}
